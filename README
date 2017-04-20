@@ -1,0 +1,17 @@
+Antonio Preziosi Ribero
+
+En esta version el programa tiene una modificacion para refinar el dominio compu-
+tacional para que haya refinamiento en la parte baja del mismo también. 
+La idea es que la condición de contorno no se propague por tanto espacio dentro 
+del modelo. 
+
+Se debe recordar que: 
+las condiciones de contorno que se imponen se modifican en el archivo generado
+por la rutina geometry.f95 y que su numeración es la siguiente: 
+
+BOTTOM, RIGHT, TOP, LEFT
+
+1 = Dirichlet
+3 = Neumann respecto a z (bordes horizontales)
+2 = Neumann respecto a x (bordes verticales)
+
