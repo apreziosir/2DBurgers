@@ -43,7 +43,7 @@ $(USE_INCL):	$(INCLUDES)
 # Estas lineas que siguen son la "receta" para el make all que pide Eclipse
 # prueba hecha el 21 de abril de 2017
 all:
-	$(FC) $(FFLAGS) $(USE_ROUT) -o $(EXC2)
+	$(FC) $(FFLAGS) $(USE_ROUT) 
 
 .f.o:
 		$(FC) $(FFLAGS) -c $*.f
