@@ -20,9 +20,9 @@
 	real, parameter :: H = 20
 	
 !       4. Initial velocity in x
-        real, parameter :: vi_x = 0.5
+        real, parameter :: vi_x = 0.
 
 !       5. Initial velocity in z
-        real, parameter :: vi_z = -0.1
+        real, parameter :: vi_z = 0.
 	
 	END MODULE mound
