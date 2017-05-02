@@ -11,10 +11,10 @@
 !	real, dimension(n*nsubx,2), intent(inout) :: velocidades	
 
 	integer :: i, j
-	character (LEN=12) :: froot = "Filt_vel.csv"
-	character (LEN=9) :: fpath = "Filtered/"
+	character (LEN=12) :: froot = "Norm_vel.csv"
+	character (LEN=11) :: fpath = "Normalized/"
 	character (LEN=5) :: fnum_c
-	character (LEN=26) :: ftot
+	character (LEN=29) :: ftot
 	character (LEN=9) :: fmat = '(I5.5,A5)'
 	
 

@@ -18,7 +18,7 @@
 	integer, intent(in) :: fn
 ! 	Local Variables
 	integer :: i,j,k,l,jol
-	real :: c1,c2,c3,c4,c5,c6
+	real :: c1,c2,c3,c4,c5,c6,c7
 	character (LEN=80) :: fout
 	character (LEN=9 ) :: fmt2
 	character (LEN=30) :: fspec
@@ -33,7 +33,7 @@
 ! 	open( fn, file='BurgersOneVar.dat')
 
 	write(fn,*) 'TITLE = "2D Burgers Equation"'
-	write(fn,*) 'VARIABLES = "X" "Z" "u" "w" "MAG"'
+	write(fn,*) 'VARIABLES = "X" "Z" "u" "w" "uu" "ww" "uw"'
 	write(fn,*) ' ZONE F=POINT, I=', n*nsubx ,', J= ', n*nsubz
 
 ! 	This is just to plot the results in tecplot
@@ -48,11 +48,13 @@
 		c2 = cz(jol)
 		c3 = u(jol)
 		c4 = w(jol)
-		c5 = sqrt(u(jol) ** 2 + w(jol) ** 2)
+		c5 = u(jol) ** 2 
+		c6 = w(jol) ** 2
+		c7 = u(jol) * w(jol)
 !		c6 = errw(jol)
 
 !               Se dejan de escribir los errores proque aca no se necesitan (APR)
-		write(fn,*) c1, c2, c3, c4, c5
+		write(fn,*) c1, c2, c3, c4, c5, c6, c7
 
 !               write(*,*) jol
 	      enddo
