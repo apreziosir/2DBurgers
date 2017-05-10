@@ -9,6 +9,7 @@
 ! 	-------------------------------------------------------------
 ! 	MODULES
 	USE scrotum
+	USE legendre
 	
 	implicit none
 ! 	Dummy Variables
@@ -28,7 +29,7 @@
 ! 	Primitive Variables form
 	 write(*,*) 'PRIMITIVE VARIABLES'
 	 do i = 1,nsg
-	  stx(i) = (u(i)*dudx(i)) + (w(i)*dudz(i))
+	  stx(i) = (u(i)*dudx(i)) + (w(i)*dudz(i)) !-nu_a*d2*velmediax
 	  stz(i) = (u(i)*dwdx(i)) + (w(i)*dwdz(i))
 !       Las siguientes dos lineas son una prueba no mas (APR)
 !	  stx(i) = 3.0*dudx(i) 
