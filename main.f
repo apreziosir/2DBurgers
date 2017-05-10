@@ -31,7 +31,7 @@
 	real,allocatable,dimension(:) :: BGx,BGz
 	real, dimension(n,n) :: F
 	real, dimension(n) :: wg
-	
+	real, dimension(nsg) :: cont ! Vector verificar cont
 	
 	integer :: t,ff,ll,fn,pp,i
 	integer :: TotTimei,TotTimef
@@ -201,16 +201,26 @@
 ! 	  Solving the system of equations
 	  call solve_gmres(u,BGx,t,delta,niterx)
 	  call solve_gmres(w,BGz,t,delta,niterz)
-	  
-!! 	  Filtering Velocities
+
+!  ! 	  Filtering Velocities
 !	  call filtering(n,numsub,ns,nsg,u,F)
 !	  call filtering(n,numsub,ns,nsg,w,F)
 !	  call interavg2d(t,u)
 !	  call interavg2d(t,w)
 	  
 	  deallocate(BGx,BGz)
-	  
+
+!         Verificando continuidad 
+	  cont = 0.
 	  call CFL(u,w,coux,couz)
+	  allocate(dudx(nsg),dwdz(nsg))
+	  call diffx(u,dudx)
+	  call diffz(w,dwdz)
+	  cont = dudx + dwdz
+	  write(*,*) 'CONTINUIDAD......', maxval(cont)
+
+	  deallocate(dudx,dwdz)
+	  call sleep(1)
 	  
 !	Comento lo que tenga que ver con los calculos de error porque no tienen 
 !	nada que hacer en este caso (APR - 170228)
