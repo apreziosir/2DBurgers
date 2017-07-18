@@ -211,16 +211,16 @@
 	  deallocate(BGx,BGz)
 
 !         Verificando continuidad 
-	  cont = 0.
-	  call CFL(u,w,coux,couz)
-	  allocate(dudx(nsg),dwdz(nsg))
-	  call diffx(u,dudx)
-	  call diffz(w,dwdz)
-	  cont = dudx + dwdz
-	  write(*,*) 'CONTINUIDAD......', maxval(cont)
+!	  cont = 0.
+!	  call CFL(u,w,coux,couz)
+!	  allocate(dudx(nsg),dwdz(nsg))
+!	  call diffx(u,dudx)
+!	  call diffz(w,dwdz)
+!	  cont = dudx + dwdz
+!	  write(*,*) 'CONTINUIDAD......', maxval(cont)
 
-	  deallocate(dudx,dwdz)
-	  call sleep(1)
+!	  deallocate(dudx,dwdz)
+!	  call sleep(1)
 	  
 !	Comento lo que tenga que ver con los calculos de error porque no tienen 
 !	nada que hacer en este caso (APR - 170228)
