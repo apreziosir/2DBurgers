@@ -45,16 +45,16 @@
 
 	        jol = ns*(k*nsubx) + (l*n) + (j*ns) + i
 	        c1 = cx(jol)
-		c2 = cz(jol)
-		c3 = u(jol)
-		c4 = w(jol)
-		c5 = u(jol) ** 2 
-		c6 = w(jol) ** 2
-		c7 = u(jol) * w(jol)
-!		c6 = errw(jol)
+			c2 = cz(jol)
+			c3 = u(jol)
+			c4 = w(jol)
+!			c5 = u(jol) ** 2 
+!			c6 = w(jol) ** 2
+!			c7 = u(jol) * w(jol)
+!			c6 = errw(jol)
 
 !               Se dejan de escribir los errores proque aca no se necesitan (APR)
-		write(fn,*) c1, c2, c3, c4, c5, c6, c7
+		write(fn,*) c1, c2, c3, c4 
 
 !               write(*,*) jol
 	      enddo

@@ -55,8 +55,9 @@
 	call derv(pd,points,d,d2,d3,pd)
 	
 ! 	Generate Weights for Legendre polynomials and filter matrix
+!	The value in line 60 (last of localfil arguments) is the filter value
 	call quad(pd,points,wg,pd)
-	call localFil(n,ns,points,F,wg,10.0)
+	call localFil(n,ns,points,F,wg,50.0)
 	
 ! 	Mapping from local coordinates to global coordinates
 	allocate(cx(nsg),cz(nsg))
@@ -121,7 +122,7 @@
 
 !	El Sleep funciona para detener la corrida por el tiempo que se le 
 !	diga entre parentesis (me ahorro poner go) (APR 170228)
-	call sleep(3)	
+!	call sleep(3)	
 !	pause 
 
 ! 	Esta parte controla la cantidad de archivos que escribe el programa
@@ -134,11 +135,11 @@
 	
 	do t = 1,pp
 
-!	 Llamando rutina para leer arreglo con top BC (170228)
+!	  Llamando rutina para leer arreglo con top BC (170228)
 	  call readBvel(t)
 	 
-! 	 write(*,*) t, pp
-! 	 Setting the advective part
+! 	  write(*,*) t, pp
+! 	  Setting the advective part
 
 	  allocate(dudx(nsg),dwdx(nsg),dudz(nsg),dwdz(nsg))
 	  

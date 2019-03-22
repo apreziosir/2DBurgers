@@ -27,7 +27,7 @@ USE_ROUT= scrotum.f mound.f geom.f legendre.f map.f aetas.f\
 	  filtering.f
 	      
 
-FC = f95
+FC = gfortran
 
 FFLAGS = -O3 -fdefault-real-8
 	 	
