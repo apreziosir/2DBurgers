@@ -57,18 +57,18 @@
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
 	call quad(pd,points,wg,pd)
-	call localFil(n,ns,points,F,wg,50.0)
+	call localFil(n,ns,points,F,wg,20)
 	
 ! 	Mapping from local coordinates to global coordinates
 	allocate(cx(nsg),cz(nsg))
 	call mapping
 
 !	Esta parte imprime coordenadas y ya (APR)
-	open(33, file = "Coordinates.dat")
-	do i = 1,nsg
-            write(33,*) cx(i), cz(i)
-	enddo   
-	close(33)
+!	open(33, file = "Coordinates.dat")
+!	do i = 1,nsg
+!            write(33,*) cx(i), cz(i)
+!	enddo   
+!	close(33)
 	
 !	pause
 	
