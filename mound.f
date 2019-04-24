@@ -24,6 +24,6 @@
         real, parameter :: vi_x = 0 !6.44 !0.
 
 !       5. Initial velocity in z
-        real, parameter :: vi_z = -0.022 !0.
+        real, parameter :: vi_z = 0.0
 	
 	END MODULE mound
