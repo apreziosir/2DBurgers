@@ -33,7 +33,7 @@
 ! 	open( fn, file='BurgersOneVar.dat')
 
 	write(fn,*) 'TITLE = "2D Burgers Equation"'
-	write(fn,*) 'VARIABLES = "X" "Z" "u" "w" "uu" "ww" "uw"'
+	write(fn,*) 'VARIABLES = "X" "Z" "u" "w"'
 	write(fn,*) ' ZONE F=POINT, I=', n*nsubx ,', J= ', n*nsubz
 
 ! 	This is just to plot the results in tecplot

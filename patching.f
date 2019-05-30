@@ -42,7 +42,7 @@
 ! 	Penalty parameters
 	alpha = 1.0
 	beta = 1.0
-	fac = 1E5 !30 !0.5 ! This factor is very important
+	fac = 30 !30 !0.5 ! This factor is very important
 	omega = 2./(pd*(pd+1.))
 	kappa = omega*alpha/beta
 	caray = (1./(omega*delta*beta))

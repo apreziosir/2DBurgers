@@ -57,7 +57,7 @@
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
 	call quad(pd,points,wg,pd)
-	call localFil(n,ns,points,F,wg,15)
+	call localFil(n,ns,points,F,wg,10.0)
 	
 ! 	Mapping from local coordinates to global coordinates
 	allocate(cx(nsg),cz(nsg))
@@ -254,6 +254,8 @@
 	    ff = ff + 1.0
 	    fn = fn + 1
 	    call output2(fn,u,w,erru,errw)
+!		Escribir velocidad vertical!		
+!		write(*,*) w
 ! 	    call error(t,u,w,ue,ve,Linfu,Linfw)
 ! 	    write(*,'(1X,I4,F7.3,3E15.4)') t, nu, dT*t, coux, couz
 	  endif
