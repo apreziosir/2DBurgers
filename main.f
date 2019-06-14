@@ -57,7 +57,7 @@
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
 	call quad(pd,points,wg,pd)
-	call localFil(n,ns,points,F,wg,10.0)
+	call localFil(n, ns, points, F, wg, 10.)
 	
 ! 	Mapping from local coordinates to global coordinates
 	allocate(cx(nsg),cz(nsg))
@@ -79,8 +79,8 @@
 	call ex2dbur(ue,ve)
 	
 	fn = 10
-	erru=0.
-	errw=0.
+	erru = 0.
+	errw = 0.
 
 !	call initburgers(ue,ve,u,w)
 !	DESCOMENTAR LA ANTERIOR SI HAY PROBLEMAS LA DE ABAJO ES LA NUEVA

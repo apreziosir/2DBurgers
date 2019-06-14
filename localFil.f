@@ -48,8 +48,8 @@
 	M=matmul(M,W)
 ! 	Exponential filter
 	alpha=-log(1.0e-16)
-	write(*,*)'Alpha is: ',alpha
-	write(*,*)'pf is: ',pf
+	write(*,*)'Alpha is: ', alpha
+	write(*,*)'pf is: ', pf
 	do k=1,n
 	  kf=k
 	  L(k,k)=exp(-alpha*((k-1.0)/(n-1.0))**pf)

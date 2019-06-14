@@ -42,12 +42,12 @@
 ! 	Penalty parameters
 	alpha = 1.0
 	beta = 1.0
-	fac = 30 !30 !0.5 ! This factor is very important
+	fac = 1.0e-20 !0.5 ! This factor is very important
 	omega = 2./(pd*(pd+1.))
-	kappa = omega*alpha/beta
-	caray = (1./(omega*delta*beta))
-	tau = caray * (delta+(2.*kappa) -
-     >	(2.*sqrt(kappa**2.+(delta*kappa))))
+	kappa = omega * alpha / beta
+	caray = (1. / (omega * delta * beta))
+	tau = caray * (delta + (2. * kappa) -
+     >	(2. * sqrt(kappa ** 2. + (delta * kappa))))
      
 ! 	1a)Continuity in the function u for vertical patching conditions
 	if (nsubx /= 1) then

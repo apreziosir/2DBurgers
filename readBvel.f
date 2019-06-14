@@ -22,7 +22,8 @@
 	
 
 !	Convierto la variable a string para que quede lista
-	write(unit=fnum_c(1:5), fmt = fmat), t
+!	write(unit=fnum_c(1:5), fmt = fmat), t
+	write(unit=fnum_c(1:5), fmt = fmat) t
 
 	ftot = fpath // fnum_c // froot
 

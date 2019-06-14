@@ -26,7 +26,7 @@
 ! (* 	5. Integer with variable that sets periodic informatios *) (APR)
 !	Suponiendo que: 0 es no periodico, 1 periodico en x, 2 periodico
 ! 	en z y 3 periodico en x y z
-	real :: periodic = 1
+	integer :: periodic = 1
 
 ! (*    6. Arreglo donde seran almacenadas las velocidades tomadas del
 !	modelo numerico (APR - Febrero 2017)

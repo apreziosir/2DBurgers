@@ -37,6 +37,6 @@
 
 ! (*    9. Forma de tratar el termino advectivo de la ecuacion skew o
 !	forma "natural" *)
-	integer :: advec = 1
+	integer :: advec = 2
 	
 	END MODULE scrotum

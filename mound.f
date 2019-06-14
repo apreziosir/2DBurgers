@@ -20,10 +20,10 @@
 ! 	3. Averaged Depth
 	real, parameter :: H = 20
 	
-!       4. Initial velocity in x
-        real, parameter :: vi_x = 0 !6.44 !0.
+!   4. Initial velocity in x
+	real, parameter :: vi_x = 0 	!6.44 !0.
 
-!       5. Initial velocity in z
-        real, parameter :: vi_z = 0.0
+!   5. Initial velocity in z
+	real, parameter :: vi_z = 0.0
 	
 	END MODULE mound
