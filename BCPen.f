@@ -46,7 +46,7 @@
 !	call sleep(1)
 	
 ! 	Square domain (Global)
-	fac = 2.0 ! 2.0 Original value on the right (APR)
+	fac = 5.	! 2.0 Original value on the right (APR)
 	omega = 2./(pd*(pd+1.))
 
 ! 	Conditions for the bottom
@@ -56,13 +56,15 @@
 	     do i = 1, n
 	       temp = (ns * k) + i
 	       if (w(temp) > 0.0) then
+
 		alpha = w(temp)
+
 		tau = fac * mfb / (2.0 * omega)
 
 ! La condicion de contorno es un solo valor si esta activo la primera linea
 ! La siguiente linea se va a cero el termino alpha*val(1) APR (170228)
 
- 		st(temp) = st(temp) + (tau*(alpha*rho(temp) - alpha*temp3))
+ 		st(temp) = st(temp) + (tau * (alpha * rho(temp) - alpha * temp3))
 ! 		st(temp) = st(temp) + tau*alpha*rho(temp)
 !		st(temp) = st(temp) + (tau*(alpha*rho(temp) - alpha*bv(temp)))
 	       endif

@@ -127,7 +127,7 @@
 
 ! 	Esta parte controla la cantidad de archivos que escribe el programa
 !	Mover para obtener mas o menos refinamiento en los textos de resultado
-	ll = (pp/(1000))
+	ll = pp / 1000
 	ff = 1.0
 
 !	Se localza el vector de velocidades (APR) - 170228

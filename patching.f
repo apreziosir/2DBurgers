@@ -40,10 +40,10 @@
 !	Se agrega la variable temp como esta en el codigo pasado por Escobar
 
 ! 	Penalty parameters
-	alpha = 1.0
+	alpha = 0.4 !1.0
 	beta = 1.0
-	fac = 1e+9 !0.5 ! This factor is very important
-	omega = 2./(pd*(pd+1.))
+	fac = 150. !0.5 ! This factor is very important
+	omega = 2. / (pd * (pd + 1.))
 	kappa = omega * alpha / beta
 	caray = (1. / (omega * delta * beta))
 	tau = caray * (delta + (2. * kappa) -
