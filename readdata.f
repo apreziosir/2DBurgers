@@ -18,12 +18,12 @@
 
 ! 	Reading coordinates of grid points
 	do i = 1,ngp
-	  read(55,*)(cgp(i,j), j = 1,2)
+	  read(55, *)(cgp(i, j), j = 1, 2)
 	enddo
 
 ! 	Reading Grid points of each subdomain
 	do i = 1,numsub
-	  read(55,*)(scp(i,j), j = 1,4)
+	  read(55, *)(scp(i, j), j = 1, 4)
 	enddo
 
 ! 	Reading Type of boundary conditions for each

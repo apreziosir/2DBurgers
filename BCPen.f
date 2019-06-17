@@ -32,9 +32,13 @@
 
 !	Poniendo el vaor de temp3 de acuerdo a la coordenada que se maneja (APR)
 	if (idc == 1) then
+
 		temp3 = vi_x
+
 	else if (idc == 2) then
+
 		temp3 = vi_z
+
 	endif
 	
 !	Verificando si velocidades entro a la subrutina - APR (170228)
@@ -42,18 +46,18 @@
 !	call sleep(1)
 	
 ! 	Square domain (Global)
-	fac = 2.0 ! Original value on the right (APR)
+	fac = 2.0 ! 2.0 Original value on the right (APR)
 	omega = 2./(pd*(pd+1.))
 
 ! 	Conditions for the bottom
-	   do k = 0,nsubx-1
-	     lz = abs(cgp(scp(k+1,2),2) - cgp(scp(k+1,3),2))
+	   do k = 0, nsubx - 1
+	     lz = abs(cgp(scp(k + 1, 2),2) - cgp(scp(k + 1, 3),2))
 	     mfb = 2.0 / lz
-	     do i = 1,n
-	       temp = (ns*k)+i
+	     do i = 1, n
+	       temp = (ns * k) + i
 	       if (w(temp) > 0.0) then
 		alpha = w(temp)
-		tau = fac * mfb / (2.0*omega)
+		tau = fac * mfb / (2.0 * omega)
 
 ! La condicion de contorno es un solo valor si esta activo la primera linea
 ! La siguiente linea se va a cero el termino alpha*val(1) APR (170228)
@@ -66,17 +70,19 @@
 	   enddo
 
 ! 	Conditions for the top
-	   do k = 0,nsubx-1
-	     lz = abs(cgp(scp(numsub-k,2),2) - cgp(scp(numsub-k,3),2))
+	   do k = 0,nsubx - 1
+	     lz = abs(cgp(scp(numsub-k,2),2)-cgp(scp(numsub-k,3),2))
 	     mft = 2.0 / lz
-	     do i=1,n
+	     do i = 1, n
 	       temp = nsg - (ns * k) + 1 - i
 	       temp1 = 100 - (k + 1) * n + i
 
 	       if (w(temp) < 0.0) then
 		alpha = abs(w(temp))
-		tau = fac * mft / (2.0*omega)
-!               La condicion de contorno es un solo valor si esta activa la primera linea
+		tau = (fac * mft) / (2.0 * omega)
+
+!       La condicion de contorno es un solo valor si esta activa la 
+!       primera linea
 ! 		st(temp) = st(temp) + (tau*(alpha*rho(temp) - alpha*val(3)))
 
 !		st(temp) = st(temp) + (tau*(alpha*rho(temp) - alpha*bv(temp)))

@@ -36,10 +36,10 @@
 !	Iteracion en arreglo bidimensional leyendo velocidades
 	do i = 1, 100 
 
-		read(23,*)(velocidades(i,j), j = 1,2)		
+		read(23,*)(velocidades(i,j), j = 1, 2)		
 
 !	Este pedazo escribe la velocidad leida para commprobar funcion
-!		write(*,*) i, velocidades(i,1), velocidades(i,2) 
+!		write(*,*) i, velocidades(i, 1), velocidades(i, 2) 
 	enddo
 
 	close(23)

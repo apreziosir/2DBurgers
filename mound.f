@@ -25,5 +25,8 @@
 
 !   5. Initial velocity in z
 	real, parameter :: vi_z = 0.0
+
+!   6. Factor that controls the filter
+!	real, parameter :: fac = 100.
 	
 	END MODULE mound

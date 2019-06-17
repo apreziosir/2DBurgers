@@ -57,7 +57,7 @@
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
 	call quad(pd,points,wg,pd)
-	call localFil(n, ns, points, F, wg, 10.)
+	call localFil(n, ns, points, F, wg, 18.)
 	
 ! 	Mapping from local coordinates to global coordinates
 	allocate(cx(nsg),cz(nsg))
@@ -128,10 +128,10 @@
 ! 	Esta parte controla la cantidad de archivos que escribe el programa
 !	Mover para obtener mas o menos refinamiento en los textos de resultado
 	ll = (pp/(1000))
-	ff= 1.0
+	ff = 1.0
 
 !	Se localza el vector de velocidades (APR) - 170228
-	allocate(velocidades(n*nsubx,2))
+	allocate(velocidades(n * nsubx, 2))
 	
 	do t = 1,pp
 

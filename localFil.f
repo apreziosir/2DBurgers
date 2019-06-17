@@ -22,39 +22,43 @@
 	
 	pi = acos(-1.0)
 	nf = n
+
 ! 	B matrix -> Legendre polyn. evaluated in GLL points
-	do j=1,n
-	 P(1)=1.
-	 P(2)=points(j)
-	 do k=2,n-1
-	  kp=k+1
-	  km=k-1
+	do j = 1, n
+	 P(1) = 1.
+	 P(2) = points(j)
+	 do k = 2, n - 1
+	  kp = k + 1
+	  km = k - 1
 	  P(kp)=(((2.0*(k-1))+1.)*P(2)*P(k)/(k+1-1))-((k-1)*P(km)/(k+1-1))
 	 enddo
-	 do i=1,n
-	  B(j,i)=P(i)
+	 do i = 1, n
+	  B(j, i) = P(i)
 	 enddo
 	enddo
-	C=0.0
-	W=0.0
-	L=0.0
-	do i=1,n-1
-	 C(i,i)=(i-1.)+0.5
-	 W(i,i)=wg(i)
+	C = 0.0
+	W = 0.0
+	L = 0.0
+	do i = 1, n - 1
+	 C(i, i) = (i - 1.) + 0.5
+	 W(i, i) = wg(i)
 	enddo
-	C(n,n)=n/2.
-	W(n,n)=wg(n)
-	M=matmul(C,transpose(B))
-	M=matmul(M,W)
+	C(n,n) = n / 2.
+	W(n,n) = wg(n)
+	M = matmul(C, transpose(B))
+	M = matmul(M, W)
+
 ! 	Exponential filter
-	alpha=-log(1.0e-16)
+	alpha = -log(1.0e-16) ! Machine precision according to Diamesis 2008
 	write(*,*)'Alpha is: ', alpha
 	write(*,*)'pf is: ', pf
-	do k=1,n
-	  kf=k
-	  L(k,k)=exp(-alpha*((k-1.0)/(n-1.0))**pf)
+	do k = 1,n
+	  kf = k
+	  L(k, k) = exp(-alpha * ((k - 1.0) / (n - 1.0)) ** pf)
+
 ! 	  L(k,k)=specfilter_bvfourier2d(kf,0.0,nf,pf)
 	enddo
+
 ! 	c2 = sqrt(2.0)*(n-1)
 ! 	do i=1,n
 ! 	 do k=1,n
@@ -63,8 +67,8 @@
 ! 	 enddo
 ! 	enddo
 	
-	F=matmul(B,L)
-	F=matmul(F,M)
+	F = matmul(B, L)
+	F = matmul(F, M)
 	end subroutine localFil
 	
 ! Comente toda esta funcion por recomendacion de escobar (APR)

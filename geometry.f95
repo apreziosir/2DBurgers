@@ -24,13 +24,13 @@
 	open(10,file='PruebaGeom.dat')
 
 	pz = (/ -20.,-18.75,-17.5,-15.,-10.,-5.,-2.5,-1.25,-0.625,-0.3125,0. /)
-	dx=(x - x0)/nx ! Cambiado por diferencia entre xmax y xmin
+	dx=(x - x0) / nx ! Cambiado por diferencia entre xmax y xmin
 !	Este pedazo de dz se quita porque es el que voy a volver variable, el 
 !	dx va a ser constante para los casos que estoy analizando
 	
 	dz = z - z0 ! Cambiado por diferencia entre zmax y zmin
 
-	ngp=(nx+1)*(nz+1)
+	ngp = (nx + 1) * (nz + 1)
 	write(*,*)'NGP is: ', ngp
 	write(*,*)'Maximo de z es', z 
 	write(*,*)'Numero de elementos', numsub 
@@ -42,23 +42,22 @@
 	 enddo
 	enddo
 
-
 ! 	Creating subdomains
-	s=0
-	do i=1,nz
-	 do j=1,nx
-	  s=s+1
-	  C(s,1) = ((nx+1)*(i-1))+j
-	  C(s,2) = ((nx+1)*(i-1))+j+1
-	  C(s,3) = ((nx+1)*i)+j+1
-	  C(s,4) = ((nx+1)*i)+j
+	s = 0
+	do i = 1, nz
+	 do j= 1, nx
+	  s= s + 1
+	  C(s,1) = ((nx + 1) * (i - 1)) + j
+	  C(s,2) = ((nx + 1) * (i - 1)) + j + 1
+	  C(s,3) = ((nx + 1) * i) + j + 1
+	  C(s,4) = ((nx + 1) * i) + j
 	 enddo
 	enddo
 	do i=1,numsub
 	 write(10,*)(C(i,j),j=1,4)
 	enddo
 ! 	Type of boundary condition
-	write(10,*) 1,3,1,3
-        write(10,*) 0,0,0,0
+	write(10,*) 3, 3, 1, 3
+        write(10,*) 0.00001, 0, 0, 0
         close(10)
 	end program geometry

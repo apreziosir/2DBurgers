@@ -18,32 +18,33 @@
 	real, dimension(n,n) :: rhoT, rhoF1, rhoF2
 	integer :: i,j,k,c
 	
-	rhoN=0.
-	do k=0,numsub-1
-	 rhoT=0.0
-	 rhoF1=0.0
+	rhoN = 0.
+	do k = 0, numsub - 1
+	 rhoT = 0.0
+	 rhoF1 = 0.0
+
 ! 	 Extracting the subdomain information from global solution
-	 do i=0,n-1
-	  do j=1,n
-	   c = (ns*k) + (i*n) + j
-	   rhoT(i+1,j)=rho(c)
+	 do i = 0, n - 1
+	  do j = 1, n
+	   c = (ns * k) + (i * n) + j
+	   rhoT(i + 1, j) = rho(c)
 	  enddo
 	 enddo
 ! 	 Now, filtering the solution at the subdomain 
 ! 	 rhoT=transpose(rhoT)
-	 rhoF1=matmul(F,rhoT)
-	 rhoF2=matmul(rhoF1,transpose(F))
+	 rhoF1 = matmul(F, rhoT)
+	 rhoF2 = matmul(rhoF1, transpose(F))
 ! 	 rhoF1=transpose(rhoF1)
 ! 	 Returning the filtered solution to the global system
-	 do i=0,n-1
-	  do j=1,n
-	   c = (ns*k) + (i*n) + j
-	   rhoN(c)=rhoN(c) + rhoF2(i+1,j)
+	 do i = 0,n - 1
+	  do j = 1, n
+	   c = (ns * k) + (i * n) + j
+	   rhoN(c) = rhoN(c) + rhoF2(i + 1, j)
 	  enddo
 	 enddo
 	
 	enddo
-	rho=rhoN
+	rho = rhoN
 	
 	
 	end subroutine filtering

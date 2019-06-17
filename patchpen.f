@@ -39,7 +39,7 @@
 	
 ! 	Some parameters
 	fac1 = 1.0
-	fac2 = 1.0
+	fac2 = 1.0 
 	omega = 2.0 / (pd * (pd + 1.0))
 
 !  	Patching for vertical interfaces
@@ -55,7 +55,7 @@
 	      r2=ns*((k*nsubx)+j)+((i-1)*n)+1 ! Right Subd
 	      if (u(r1) >= 0.0) then ! Apply penalty to Right side of the interface
 		alpha = u(r1)
-		taur = fac1 * mfr / (2.0*omega)
+		taur = fac1 * mfr / (2.0 * omega)
 		st(r2) = st(r2) + (taur * ((alpha*rho(r2)) - (alpha*rho(r1))))
 	      else ! Apply penalty to LEFT side of the interface
 	        gamma = abs(u(r1))
@@ -73,7 +73,7 @@
 	                  ! usar algo que relac numsub=nsubx*nsubz y hacerle
 	  lz = cgp(scp((k-1)*nsubx+1,2),2) - cgp(scp((k-1)*nsubx+1,3),2)
 !	  quite el valor absoluto en la linea 74, hice la diferencia y lo calcule despues APR	  
-          lz = abs(lz)
+      lz = abs(lz)
 	  mfb = 2.0 / lz
 	  lz1 = abs(cgp(scp(k*nsubx+1,2),2) - cgp(scp(k*nsubx+1,3),2))
 	  mft = 2.0 / lz1
@@ -83,7 +83,7 @@
 	      r2 = ns*((k*nsubx)+j-1)+i     ! Top Subdomain
 	      if (w(r1) >= 0.0) then ! Apply penalty to Right side of the interface
 		alpha = w(r1)
-		taut = fac1 * mft / (2.0*omega)
+		taut = fac1 * mft / (2.0 * omega)
 		st(r2) = st(r2) + (taut * ((alpha*rho(r2)) - (alpha*rho(r1))))
 	      else ! Apply penalty to LEFT side of the interface
 	        gamma = abs(w(r1))
