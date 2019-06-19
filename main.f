@@ -57,7 +57,7 @@
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
 	call quad(pd,points,wg,pd)
-	call localFil(n, ns, points, F, wg, 18.)
+	call localFil(n, ns, points, F, wg, 100.)
 	
 ! 	Mapping from local coordinates to global coordinates
 	allocate(cx(nsg),cz(nsg))
@@ -250,7 +250,7 @@
 	  Lu = Linfu
 	  Lw = Linfw
 	    
-	  if (t == ll*ff) then
+	  if (t == ll * ff) then
 	    ff = ff + 1.0
 	    fn = fn + 1
 	    call output2(fn,u,w,erru,errw)

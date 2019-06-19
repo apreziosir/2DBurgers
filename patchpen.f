@@ -38,8 +38,8 @@
 	real :: taul,taur,taut,taub,fac1,fac2
 	
 ! 	Some parameters
-	fac1 = 1.0
-	fac2 = 1.0 
+	fac1 = 1.0e+7
+	fac2 = 1.0e+7 
 	omega = 2.0 / (pd * (pd + 1.0))
 
 !  	Patching for vertical interfaces
