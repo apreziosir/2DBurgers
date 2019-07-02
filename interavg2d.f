@@ -149,8 +149,8 @@
 	 write(*,*)
 	 write(*,*)'t = ', t
 ! 	 write(*,*)'Total numbero of interfacial points = ',countV+countH
-	 write(*,*)'Averaging applied to ', bu1 ,'% of the points'
+!	 write(*,*)'Averaging applied to ', bu1 ,'% of the points'
 ! 	 write(*,*)'Total number of corners = ',countC
-	 write(*,*)'Averaging applied to ',bu2 ,'% of corners'
+!	 write(*,*)'Averaging applied to ',bu2 ,'% of corners'
 	endif
 	end subroutine interavg2d

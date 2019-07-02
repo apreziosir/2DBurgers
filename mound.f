@@ -11,8 +11,8 @@
 	save
 	
 ! 	1. Viscosity (unidades cgs)
-!	real, parameter :: nu = 4.2133 !8.8936 (original)
-	real, parameter :: nu = 0.0114
+	real, parameter :: nu = 0.0294 !8.8936 (original)
+!	real, parameter :: nu = 0.0114
 
 ! 	2. Gravity (unidades cgs)
 	real, parameter :: g = 981

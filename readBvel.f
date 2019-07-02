@@ -7,7 +7,7 @@
 	implicit none
 	
 	integer, intent(in) :: t
-!	Cuando la variable viene de un modulo no se declara aca (APR)
+	!	Cuando la variable viene de un modulo no se declara aca (APR)
 !	real, dimension(n*nsubx,2), intent(inout) :: velocidades	
 
 	integer :: i, j
@@ -43,6 +43,5 @@
 	enddo
 
 	close(23)
-	
 	   
 	end subroutine readBvel

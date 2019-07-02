@@ -39,7 +39,7 @@
 	
 	real,dimension(nsg) :: erru,errw
 	integer :: niterx, niterz
-	real :: coux,couz
+	real :: coux,couz, un2, wn2
 	real :: Linfu, Linfw, Lu, Lw, eu, ew
 
 	
@@ -57,7 +57,7 @@
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
 	call quad(pd,points,wg,pd)
-	call localFil(n, ns, points, F, wg, 100.)
+	call localFil(n, ns, points, F, wg, 12.)
 	
 ! 	Mapping from local coordinates to global coordinates
 	allocate(cx(nsg),cz(nsg))
@@ -170,6 +170,13 @@
 ! 	  Advancing in time
 	  call BDAB(t,u,stx,um1,um2,stxm1,stxm2)
 	  call BDAB(t,w,stz,wm1,wm2,stzm1,stzm2)
+
+!     Estimating norms of different vectors to check wether the BC are well or 
+!	  ill imposed (190702 - APR)
+	  write(*,*) "Norm of uB: ", norm2(velocidades(:,1))
+	  write(*,*) "Norm of wB: ", norm2(velocidades(:,2))
+	  write(*,*) "Norm of u: ", norm2(u) 
+	  write(*,*) "Norm of w: ", norm2(w)
 	
 	  deallocate(stx,stz)
 
@@ -232,7 +239,7 @@
 !	  ew = abs(Linfw - Lw)/Linfu
 	  
 ! 	  write(*,'(1X,I4,2F7.3,4E15.4)') t,coux,couz,eu,ew,Linfu,Linfw
-	  write(*,*) t, niterx, niterz
+!	  write(*,*) t, niterx, niterz
 	  write(*,*) 'Tiempo REAL simulado:', t*dT
 	  
 !	  if (Linfu < 1e-5 .and. Linfw < 1e-5) then
