@@ -170,13 +170,6 @@
 ! 	  Advancing in time
 	  call BDAB(t,u,stx,um1,um2,stxm1,stxm2)
 	  call BDAB(t,w,stz,wm1,wm2,stzm1,stzm2)
-
-!     Estimating norms of different vectors to check wether the BC are well or 
-!	  ill imposed (190702 - APR)
-	  write(*,*) "Norm of uB: ", norm2(velocidades(:,1))
-	  write(*,*) "Norm of wB: ", norm2(velocidades(:,2))
-	  write(*,*) "Norm of u: ", norm2(u) 
-	  write(*,*) "Norm of w: ", norm2(w)
 	
 	  deallocate(stx,stz)
 
@@ -186,6 +179,14 @@
 	  call filtering(n,numsub,ns,nsg,w,F)
 	  call interavg2d(t,u)
 	  call interavg2d(t,w)
+
+!     Estimating norms of different vectors to check wether the BC are well or 
+!	  ill imposed (190702 - APR)
+      write(*,*) "AFTER ADVECTIVE PART SOLUTION"
+	  write(*,*) "Norm of uB: ", norm2(velocidades(:,1))
+	  write(*,*) "Norm of wB: ", norm2(velocidades(:,2))
+	  write(*,*) "Norm of uTop: ", norm2(u(size(u) - 99: size(u))) 
+	  write(*,*) "Norm of wTop: ", norm2(w(size(w) - 99: size(w)))
 	 
 ! 	 Setting the implicit pressure treatment
 	 
@@ -209,6 +210,14 @@
 ! 	  Solving the system of equations
 	  call solve_gmres(u,BGx,t,delta,niterx)
 	  call solve_gmres(w,BGz,t,delta,niterz)
+
+!     Estimating norms of different vectors to check wether the BC are well or 
+!	  ill imposed (190702 - APR)
+      write(*,*) "AFTER DIFFUSIVE PART SOLUTION"
+	  write(*,*) "Norm of uB: ", norm2(velocidades(:,1))
+	  write(*,*) "Norm of wB: ", norm2(velocidades(:,2))
+	  write(*,*) "Norm of uTop: ", norm2(u(size(u) - 99: size(u))) 
+	  write(*,*) "Norm of wTop: ", norm2(w(size(w) - 99: size(w)))
 
 !  ! 	  Filtering Velocities
 !	  call filtering(n,numsub,ns,nsg,u,F)
