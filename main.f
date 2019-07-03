@@ -39,7 +39,7 @@
 	
 	real,dimension(nsg) :: erru,errw
 	integer :: niterx, niterz
-	real :: coux,couz, un2, wn2
+	real :: coux,couz, un2, wn2, filtro1
 	real :: Linfu, Linfw, Lu, Lw, eu, ew
 
 	
@@ -53,11 +53,13 @@
 ! 	Generating differentiation matrices
 	allocate(d(n,n),d2(n,n),d3(n,n))
 	call derv(pd,points,d,d2,d3,pd)
+
+	filtro1 = 100.
 	
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
 	call quad(pd,points,wg,pd)
-	call localFil(n, ns, points, F, wg, 12.)
+	call localFil(n, ns, points, F, wg, filtro1)
 	
 ! 	Mapping from local coordinates to global coordinates
 	allocate(cx(nsg),cz(nsg))
@@ -180,13 +182,19 @@
 	  call interavg2d(t,u)
 	  call interavg2d(t,w)
 
+! 	  Estimating difference between BC and top velocities (as norm2)
+!     Euclidean norm (190703 APR)
+	  un2 = norm2(velocidades(:,1) - u(size(u) - 99: size(u)))
+	  wn2 = norm2(velocidades(:,2) - w(size(w) - 99: size(w)))
+
 !     Estimating norms of different vectors to check wether the BC are well or 
 !	  ill imposed (190702 - APR)
       write(*,*) "AFTER ADVECTIVE PART SOLUTION"
-	  write(*,*) "Norm of uB: ", norm2(velocidades(:,1))
-	  write(*,*) "Norm of wB: ", norm2(velocidades(:,2))
-	  write(*,*) "Norm of uTop: ", norm2(u(size(u) - 99: size(u))) 
-	  write(*,*) "Norm of wTop: ", norm2(w(size(w) - 99: size(w)))
+	  write(*,*) "Norm of u difference: ", un2
+	  write(*,*) "Norm of w difference: ", wn2
+	  write(*,*) " "
+
+	  call sleep(1)
 	 
 ! 	 Setting the implicit pressure treatment
 	 
@@ -211,19 +219,27 @@
 	  call solve_gmres(u,BGx,t,delta,niterx)
 	  call solve_gmres(w,BGz,t,delta,niterz)
 
+! 	  Estimating difference between BC and top velocities (as norm2)
+!     Euclidean norm (190703 APR)
+	  un2 = norm2(velocidades(:,1) - u(size(u) - 99: size(u)))
+	  wn2 = norm2(velocidades(:,2) - w(size(w) - 99: size(w)))
+
 !     Estimating norms of different vectors to check wether the BC are well or 
 !	  ill imposed (190702 - APR)
       write(*,*) "AFTER DIFFUSIVE PART SOLUTION"
-	  write(*,*) "Norm of uB: ", norm2(velocidades(:,1))
-	  write(*,*) "Norm of wB: ", norm2(velocidades(:,2))
-	  write(*,*) "Norm of uTop: ", norm2(u(size(u) - 99: size(u))) 
-	  write(*,*) "Norm of wTop: ", norm2(w(size(w) - 99: size(w)))
+	  write(*,*) "Norm of u difference: ", un2
+	  write(*,*) "Norm of w difference: ", wn2
+	  write(*,*) " "
+
+ 	  call sleep(1)
 
 !  ! 	  Filtering Velocities
 !	  call filtering(n,numsub,ns,nsg,u,F)
 !	  call filtering(n,numsub,ns,nsg,w,F)
 !	  call interavg2d(t,u)
 !	  call interavg2d(t,w)
+
+!     Printing differences between vectors
 	  
 	  deallocate(BGx,BGz)
 

@@ -46,7 +46,7 @@
 !	call sleep(1)
 	
 ! 	Square domain (Global)
-	fac = 2.0  ! Original value on the right (APR)
+	fac = 1.0  ! 2.0 Original value on the right (APR)
 	omega = 2. / (pd * (pd + 1.))
 
 ! 	Conditions for the bottom
