@@ -65,18 +65,18 @@
 	allocate(cx(nsg),cz(nsg))
 	call mapping
 
-!	Esta parte imprime coordenadas y ya (APR)
+!	Esta parte imprime coordenadas y ya (APR) (190715)
 !	open(33, file = "Coordinates.dat")
 !	do i = 1,nsg
-!            write(33,*) cx(i), cz(i)
+!            write(*,*) cx(i), cz(i)
 !	enddo   
 !	close(33)
 	
+!	stop
 !	pause
 	
 ! 	Setting exact solution
 	allocate(ue(nsg),ve(nsg))
-
 	
 	call ex2dbur(ue,ve)
 	
@@ -108,7 +108,6 @@
 	deallocate(points,d3)
 	allocate(um1(nsg),um2(nsg),stxm1(nsg),stxm2(nsg))
 	allocate(wm1(nsg),wm2(nsg),stzm1(nsg),stzm2(nsg))
-	
 	
 	Lu = 10.
 	Lw = 10.

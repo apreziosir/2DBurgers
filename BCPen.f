@@ -80,8 +80,8 @@
 	       temp1 = 100 - (k + 1) * n + i
 
 	       if (w(temp) < 0.0) then
-		alpha = abs(w(temp))
-		tau = (fac * mft) / (2.0 * omega)
+			alpha = abs(w(temp))
+			tau = (fac * mft) / (2.0 * omega)
 
 !       La condicion de contorno es un solo valor si esta activa la 
 !       primera linea
