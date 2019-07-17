@@ -33,11 +33,11 @@
 	real, dimension(n) :: wg
 	real, dimension(nsg) :: cont ! Vector verificar cont
 	
-	integer :: t,ff,ll,fn,pp,i
+	integer :: t, ff, ll, fn, pp, i, kk, ii, jj, temp11
 	integer :: TotTimei,TotTimef
 	real :: delta
 	
-	real,dimension(nsg) :: erru,errw
+	real, dimension(nsg) :: erru, errw, bu, bw
 	integer :: niterx, niterz
 	real :: coux,couz, un2, wn2, filtro1
 	real :: Linfu, Linfw, Lu, Lw, eu, ew
@@ -182,9 +182,22 @@
 	  call interavg2d(t,w)
 
 ! 	  Estimating difference between BC and top velocities (as norm2)
-!     Euclidean norm (190703 APR)
-	  un2 = norm2(velocidades(:,1) - u(size(u) - 99: size(u)))
-	  wn2 = norm2(velocidades(:,2) - w(size(w) - 99: size(w)))
+!     Euclidean norm (190703 APR)	
+	  jj = 1
+	  do kk = 0, nsubx - 1
+		
+		do ii = 1, n
+
+		  temp11 = nsg - (ns * kk) + 1 - ii
+
+		  bu(jj) = u(temp11)
+		  bw(jj) = w(temp11)		  
+
+		enddo
+	  enddo
+
+	  un2 = norm2(bu - u)
+	  wn2 = norm2(bw - w)
 
 !     Estimating norms of different vectors to check wether the BC are well or 
 !	  ill imposed (190702 - APR)
@@ -220,8 +233,21 @@
 
 ! 	  Estimating difference between BC and top velocities (as norm2)
 !     Euclidean norm (190703 APR)
-	  un2 = norm2(velocidades(:,1) - u(size(u) - 99: size(u)))
-	  wn2 = norm2(velocidades(:,2) - w(size(w) - 99: size(w)))
+	  jj = 1
+	  do kk = 0, nsubx - 1
+		
+		do ii = 1, n
+
+		  temp11 = nsg - (ns * kk) + 1 - ii
+
+		  bu(jj) = u(temp11)
+		  bw(jj) = w(temp11)		  
+
+		enddo
+	  enddo
+
+	  un2 = norm2(bu - u)
+	  wn2 = norm2(bw - w)
 
 !     Estimating norms of different vectors to check wether the BC are well or 
 !	  ill imposed (190702 - APR)
