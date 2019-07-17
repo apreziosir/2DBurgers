@@ -22,13 +22,13 @@
 	
 	real,allocatable,dimension(:) :: ue,ve
 	
-	real,dimension(nsg) :: u,w
-	real,allocatable,dimension(:) :: dudx,dwdx
-	real,allocatable,dimension(:) :: dudz,dwdz
-	real,allocatable,dimension(:) :: stx,stz
-	real,allocatable,dimension(:) :: um1,um2,stxm1,stxm2
-	real,allocatable,dimension(:) :: wm1,wm2,stzm1,stzm2
-	real,allocatable,dimension(:) :: BGx,BGz
+	real, dimension(nsg) :: u,w
+	real, allocatable, dimension(:) :: dudx,dwdx
+	real, allocatable, dimension(:) :: dudz,dwdz
+	real, allocatable, dimension(:) :: stx,stz
+	real, allocatable, dimension(:) :: um1,um2,stxm1,stxm2
+	real, allocatable, dimension(:) :: wm1,wm2,stzm1,stzm2
+	real, allocatable, dimension(:) :: BGx,BGz
 	real, dimension(n,n) :: F
 	real, dimension(n) :: wg
 	real, dimension(nsg) :: cont ! Vector verificar cont
@@ -37,7 +37,8 @@
 	integer :: TotTimei,TotTimef
 	real :: delta
 	
-	real, dimension(nsg) :: erru, errw, bu, bw
+	real, dimension(nsg) :: erru, errw 
+	real, dimension(n*nsubx) :: bu, bw
 	integer :: niterx, niterz
 	real :: coux,couz, un2, wn2, filtro1
 	real :: Linfu, Linfw, Lu, Lw, eu, ew
@@ -189,15 +190,20 @@
 		do ii = 1, n
 
 		  temp11 = nsg - (ns * kk) + 1 - ii
+		  !temp11 = 100 - (kk + 1) * n + ii
 
 		  bu(jj) = u(temp11)
-		  bw(jj) = w(temp11)		  
+		  bw(jj) = w(temp11)
+		  
+		  jj = jj + 1
 
 		enddo
 	  enddo
+	
+	  stop 
 
-	  un2 = norm2(bu - u)
-	  wn2 = norm2(bw - w)
+	  un2 = norm2(velocidades(:,1) - bu)
+	  wn2 = norm2(velocidades(:,2) - bw)
 
 !     Estimating norms of different vectors to check wether the BC are well or 
 !	  ill imposed (190702 - APR)
@@ -239,15 +245,18 @@
 		do ii = 1, n
 
 		  temp11 = nsg - (ns * kk) + 1 - ii
+		  !temp11 = 100 - (kk + 1) * n + ii
 
 		  bu(jj) = u(temp11)
-		  bw(jj) = w(temp11)		  
+		  bw(jj) = w(temp11)
+		  
+		  jj = jj + 1
 
 		enddo
 	  enddo
 
-	  un2 = norm2(bu - u)
-	  wn2 = norm2(bw - w)
+	  un2 = norm2(velocidades(:,1) - bu)
+	  wn2 = norm2(velocidades(:,2) - bw)
 
 !     Estimating norms of different vectors to check wether the BC are well or 
 !	  ill imposed (190702 - APR)
