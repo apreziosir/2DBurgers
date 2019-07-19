@@ -17,21 +17,22 @@ USE_INCL= scrotum.o mound.o geom.o legendre.o map.o aetas.o\
 	  diffx.o diffz.o spamer.o BCPen.o patchpen.o BDAB.o\
 	  setdelta.o initburgers.o CFL.o\
 	  BCrhs.o solve_gmres.o lhs_gmres.o allmixed.o\
-	  BC.o patching.o interavg2d.o quad.o localFil.o filtering.o 
+	  BC.o patching.o interavg2d.o quad.o localFil.o filtering.o\
+	  output3.o 
 	  
 USE_ROUT= scrotum.f mound.f geom.f legendre.f map.f aetas.f\
 	  main.f readdata.f gll.f derv.f mapping.f ex2dbur.f output2.f\
 	  velocity.f timestep.f readBvel.f diffx.f diffz.f spamer.f BCPen.f\
 	  patchpen.f BDAB.f setdelta.f initburgers.f CFL.f BCrhs.f solve_gmres.f\
 	  lhs_gmres.f allmixed.f BC.f patching.f interavg2d.f quad.f localFil.f\
-	  filtering.f
+	  filtering.f output3.f
 	      
 
+# FC = /opt/intel/bin/ifort
 FC = f95
 
+# FFLAGS = -Ofast
 FFLAGS = -O3 -fdefault-real-8
-	 	
-
 
 #  Compile
 

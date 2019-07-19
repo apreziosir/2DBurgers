@@ -55,7 +55,7 @@
 	allocate(d(n,n),d2(n,n),d3(n,n))
 	call derv(pd,points,d,d2,d3,pd)
 
-	filtro1 = 100.
+	filtro1 = 20.
 	
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
@@ -200,7 +200,7 @@
 		enddo
 	  enddo
 	
-	  stop 
+!	  stop 
 
 	  un2 = norm2(velocidades(:,1) - bu)
 	  wn2 = norm2(velocidades(:,2) - bw)
@@ -319,7 +319,8 @@
 	  if (t == ll * ff) then
 	    ff = ff + 1.0
 	    fn = fn + 1
-	    call output2(fn,u,w,erru,errw)
+		call output2(fn,u,w,erru,errw)
+		call output3(fn,velocidades,bu,bw)
 !		Escribir velocidad vertical!		
 !		write(*,*) w
 ! 	    call error(t,u,w,ue,ve,Linfu,Linfw)
