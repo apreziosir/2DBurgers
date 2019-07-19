@@ -13,6 +13,10 @@ import matplotlib.pyplot as plt
 
 a = np.loadtxt('Boundary_0011.dat', skiprows = 2)
 
-plt.plot(a[:,0], c = 'red')
-plt.plot(a[:,2], c = 'blue')
+# Plotting u velocities
+#plt.plot(a[:,0], c = 'red')
+#plt.plot(a[:,2], c = 'blue')
 
+# Plotting w velocities
+plt.plot(a[:,1], c = 'red')
+plt.plot(a[:,3], c = 'blue')
