@@ -36,7 +36,7 @@
     ! Total of points to ease things (nothing special)
         tot = n * nsubx
     
-        do k = 0, nsubx * n - 1
+        do k = 0, tot - 1
           
             c1 = velocidades(k + 1, 1)
             c2 = velocidades(k + 1, 2)
