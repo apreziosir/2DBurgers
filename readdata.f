@@ -28,9 +28,9 @@
 
 ! 	Reading Type of boundary conditions for each
 ! 	side of the square domain
-	read(55,*)(cond(j), j = 1,4)
+	read(55,*)(cond(j), j = 1, 4)
 
 ! 	Reading the magnitude of the imposed BC
-	read(55,*)(val(j), j = 1,4)
+	read(55,*)(val(j), j = 1, 4)
 	
 	end subroutine readdata

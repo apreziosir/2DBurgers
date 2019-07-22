@@ -29,13 +29,9 @@
 
 !	Verificando valores en el fondo del dominio computacional APR
 	if (idc == 1) then
-
-		temp3 = vi_x
-
+		temp3 = val(1)
 	else if (idc == 2) then
-
-		temp3 = vi_z 
-
+		temp3 = val(1)
 	endif
 	
 ! 	Square domain (Global)

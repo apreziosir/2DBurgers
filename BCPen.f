@@ -25,20 +25,17 @@
 	integer, intent(in) :: idc
 	
 ! 	Local Variables
-	integer :: k,i,temp,t1,temp1
-	real :: lz,lx,fac,temp2,temp3
-	real :: tau,omega,alpha
-	real :: mfb,mft,mfr,mfl
+	integer :: k, i, temp, t1, temp1, SS
+	real :: lz, lx, fac, temp2, temp3
+	real :: tau, omega, alpha
+	real :: mfb, mft, mfr, mfl
 
-!	Poniendo el vaor de temp3 de acuerdo a la coordenada que se maneja (APR)
+!	Poniendo el vaor de temp3 de acuerdo a la coordenada que se maneja 
+!	(APR)
 	if (idc == 1) then
-
-		temp3 = vi_x
-
+		temp3 = val(1)
 	else if (idc == 2) then
-
-		temp3 = vi_z
-
+		temp3 = val(1)
 	endif
 	
 !	Verificando si velocidades entro a la subrutina - APR (170228)
@@ -46,7 +43,7 @@
 !	call sleep(1)
 	
 ! 	Square domain (Global)
-	fac = 1.0  ! 2.0 Original value on the right (APR)
+	fac = 2.0  ! 2.0 Original value on the right (APR)
 	omega = 2. / (pd * (pd + 1.))
 
 ! 	Conditions for the bottom
@@ -71,13 +68,22 @@
 	     enddo
 	   enddo
 
+!	Variable SS that tracks size - counter for imposing BC
+	   SS = size(velocidades(:,1))
+
 ! 	Conditions for the top
-	   do k = 0,nsubx - 1
+	   do k = 0, nsubx - 1
 	     lz = abs(cgp(scp(numsub-k,2),2)-cgp(scp(numsub-k,3),2))
 	     mft = 2.0 / lz
-	     do i = 1, n
+		 do i = 1, n
+			
 	       temp = nsg - (ns * k) + 1 - i
-	       temp1 = 100 - (k + 1) * n + i
+		   temp1 = SS
+!		   temp1 = SS - (k + 1) * n + i
+
+!	Testing the order of the imposed BC (190722 - APR)
+		   write(*,*) 'Esto es!!!'
+		   write(*,*) temp, temp1 
 
 	       if (w(temp) < 0.0) then
 			alpha = abs(w(temp))
@@ -89,8 +95,12 @@
 
 !		st(temp) = st(temp) + (tau*(alpha*rho(temp) - alpha*bv(temp)))
 		temp2 = tau*(alpha*rho(temp)-alpha*velocidades(temp1,idc))
-	        st(temp)=st(temp) + temp2
-	       endif
+			st(temp)=st(temp) + temp2
+			
+		   endif
+		   
+           SS = SS - 1
+
 	     enddo
 	   enddo
 

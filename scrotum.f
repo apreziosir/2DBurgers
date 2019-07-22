@@ -24,7 +24,7 @@
 	integer, parameter :: ngp = (nsubx+1)*(nsubz+1)
 	
 ! (* 	5. Total number of subdomains *)
-	integer, parameter :: numsub = nsubx*nsubz
+	integer, parameter :: numsub = nsubx * nsubz
 	
 ! (* 	6. Number of collocation points per subdomain (ns=n*n) *)
 	integer, parameter :: ns = n * n

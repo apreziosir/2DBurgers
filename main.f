@@ -42,14 +42,13 @@
 	integer :: niterx, niterz
 	real :: coux,couz, un2, wn2, filtro1
 	real :: Linfu, Linfw, Lu, Lw, eu, ew
-
 	
 ! 	Reading data file
 	call readdata
 	
 ! 	Generating Gauss-Lobatto-Legendre points
 	allocate(points(n))
-	call jacobl(pd,0.,0.,points,n)
+	call jacobl(pd, 0., 0.,points, n)
 
 ! 	Generating differentiation matrices
 	allocate(d(n,n),d2(n,n),d3(n,n))
@@ -79,7 +78,7 @@
 ! 	Setting exact solution
 	allocate(ue(nsg),ve(nsg))
 	
-	call ex2dbur(ue,ve)
+	call ex2dbur(ue, ve)
 	
 	fn = 10
 	erru = 0.
@@ -184,7 +183,7 @@
 
 ! 	  Estimating difference between BC and top velocities (as norm2)
 !     Euclidean norm (190703 APR)	
-	  jj = 1
+	  jj = size(bu)
 	  do kk = 0, nsubx - 1
 		
 		do ii = 1, n
@@ -195,7 +194,7 @@
 		  bu(jj) = u(temp11)
 		  bw(jj) = w(temp11)
 		  
-		  jj = jj + 1
+		  jj = jj - 1
 
 		enddo
 	  enddo
@@ -239,7 +238,7 @@
 
 ! 	  Estimating difference between BC and top velocities (as norm2)
 !     Euclidean norm (190703 APR)
-	  jj = 1
+	  jj = size(bu)
 	  do kk = 0, nsubx - 1
 		
 		do ii = 1, n
@@ -250,7 +249,7 @@
 		  bu(jj) = u(temp11)
 		  bw(jj) = w(temp11)
 		  
-		  jj = jj + 1
+		  jj = jj - 1
 
 		enddo
 	  enddo

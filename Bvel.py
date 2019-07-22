@@ -10,8 +10,7 @@ compare velocities
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-a = np.loadtxt('Boundary_0011.dat', skiprows = 2)
+a = np.loadtxt('Boundary_0012.dat', skiprows = 2)
 
 # Plotting u velocities
 #plt.plot(a[:,0], c = 'red')

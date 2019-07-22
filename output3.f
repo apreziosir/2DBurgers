@@ -40,8 +40,8 @@
           
             c1 = velocidades(k + 1, 1)
             c2 = velocidades(k + 1, 2)
-            c3 = bu(tot - k)
-            c4 = bw(tot - k)
+            c3 = bu(k + 1)
+            c4 = bw(k + 1)
 
         write(fn,*) c1, c2, c3, c4 
 
