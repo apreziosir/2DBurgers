@@ -28,11 +28,11 @@ USE_ROUT= scrotum.f mound.f geom.f legendre.f map.f aetas.f\
 	  filtering.f output3.f
 	      
 
-# FC = /opt/intel/bin/ifort
-FC = f95
+FC = /opt/intel/bin/ifort
+# FC = f95
 
-# FFLAGS = -Ofast
-FFLAGS = -O3 -fdefault-real-8
+FFLAGS = -Ofast -r8 
+# FFLAGS = -O3 -fdefault-real-8
 
 #  Compile
 
