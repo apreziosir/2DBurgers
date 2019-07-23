@@ -82,20 +82,20 @@
 !		   temp1 = SS - (k + 1) * n + i
 
 !	Testing the order of the imposed BC (190722 - APR)
-		   write(*,*) 'Esto es!!!'
-		   write(*,*) temp, temp1 
+!		   write(*,*) 'Esto es!!!'
+!		   write(*,*) temp, temp1 
 
 	       if (w(temp) < 0.0) then
-			alpha = abs(w(temp))
-			tau = (fac * mft) / (2.0 * omega)
+			  alpha = abs(w(temp))
+			  tau = (fac * mft) / (2.0 * omega)
 
 !       La condicion de contorno es un solo valor si esta activa la 
 !       primera linea
 ! 		st(temp) = st(temp) + (tau*(alpha*rho(temp) - alpha*val(3)))
 
 !		st(temp) = st(temp) + (tau*(alpha*rho(temp) - alpha*bv(temp)))
-		temp2 = tau*(alpha*rho(temp)-alpha*velocidades(temp1,idc))
-			st(temp)=st(temp) + temp2
+		      temp2 = tau*(alpha*rho(temp)-alpha*velocidades(temp1,idc))
+			  st(temp)=st(temp) + temp2
 			
 		   endif
 		   

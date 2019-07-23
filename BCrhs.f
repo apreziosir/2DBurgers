@@ -23,9 +23,9 @@
 	real,dimension(nsg),intent(in) :: bv
 	
 ! 	Local Variables
-	integer :: k,i,temp,temp1,nr,temp2
+	integer :: k, i, temp, temp1, nr
 	real :: lz,lx
-	real :: tau,omega,alpha,beta,temp3
+	real :: tau, omega, alpha, beta, temp2, temp3
 
 !	Verificando valores en el fondo del dominio computacional APR
 	if (idc == 1) then
@@ -67,18 +67,22 @@
 
 ! 	Conditions for the top
 	if (cond(3) == 1) then ! Dirichlet
-	   do k = 0,nsubx-1
+
+	   temp1 = size(velocidades(:,1))
+
+	   do k = 0, nsubx-1
 	     lz = abs(cgp(scp(numsub-k,2),2) - cgp(scp(numsub-k,3),2))
 	     alpha = 1.
 	     omega = 2. / (pd*(pd+1.))
 	     tau = (delta*(2./lz)**2.) / (alpha*omega**2.)
 	     do i=1,n
-	       temp = nsg-(ns*k)+1-i
-	       temp1= 100 - (k + 1) * n + i
- 	       BG(temp) = BG(temp) - (tau * val(3))
+	       temp = nsg - (ns * k) + 1 - i
+	       temp1 = 100 - (k + 1) * n + i
+! 	       BG(temp) = BG(temp) - (tau * val(3))
 	       BG(temp) = BG(temp) - (tau * bv(temp))
-	       temp2 = tau * velocidades(temp1,idc)
-	       BG(temp) = BG(temp) - temp2
+	       temp2 = tau * velocidades(temp1, idc)
+		   BG(temp) = BG(temp) - temp2
+		   temp1 = temp1 - 1
 	     enddo
 	   enddo
 	elseif (cond(3) == 3) then ! Neumann with respect to z (PUEDE MEJORARSE)

@@ -54,7 +54,7 @@
 	allocate(d(n,n),d2(n,n),d3(n,n))
 	call derv(pd,points,d,d2,d3,pd)
 
-	filtro1 = 20.
+	filtro1 = 15.
 	
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
@@ -187,15 +187,11 @@
 	  do kk = 0, nsubx - 1
 		
 		do ii = 1, n
-
 		  temp11 = nsg - (ns * kk) + 1 - ii
 		  !temp11 = 100 - (kk + 1) * n + ii
-
 		  bu(jj) = u(temp11)
-		  bw(jj) = w(temp11)
-		  
+		  bw(jj) = w(temp11)		  
 		  jj = jj - 1
-
 		enddo
 	  enddo
 	
@@ -206,12 +202,12 @@
 
 !     Estimating norms of different vectors to check wether the BC are well or 
 !	  ill imposed (190702 - APR)
-      write(*,*) "AFTER ADVECTIVE PART SOLUTION"
-	  write(*,*) "Norm of u difference: ", un2
-	  write(*,*) "Norm of w difference: ", wn2
-	  write(*,*) " "
+!      write(*,*) "AFTER ADVECTIVE PART SOLUTION"
+!	  write(*,*) "Norm of u difference: ", un2
+!	  write(*,*) "Norm of w difference: ", wn2
+!	  write(*,*) " "
 
-	  call sleep(1)
+!	  call sleep(1)
 	 
 ! 	 Setting the implicit pressure treatment
 	 
@@ -264,7 +260,7 @@
 	  write(*,*) "Norm of w difference: ", wn2
 	  write(*,*) " "
 
- 	  call sleep(1)
+! 	  call sleep(1)
 
 !  ! 	  Filtering Velocities
 !	  call filtering(n,numsub,ns,nsg,u,F)
