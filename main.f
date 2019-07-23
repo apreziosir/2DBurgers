@@ -54,7 +54,7 @@
 	allocate(d(n,n),d2(n,n),d3(n,n))
 	call derv(pd,points,d,d2,d3,pd)
 
-	filtro1 = 15.
+	filtro1 = 100.
 	
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
@@ -235,18 +235,13 @@
 ! 	  Estimating difference between BC and top velocities (as norm2)
 !     Euclidean norm (190703 APR)
 	  jj = size(bu)
-	  do kk = 0, nsubx - 1
-		
+	  do kk = 0, nsubx - 1		
 		do ii = 1, n
-
 		  temp11 = nsg - (ns * kk) + 1 - ii
 		  !temp11 = 100 - (kk + 1) * n + ii
-
 		  bu(jj) = u(temp11)
-		  bw(jj) = w(temp11)
-		  
+		  bw(jj) = w(temp11)		  
 		  jj = jj - 1
-
 		enddo
 	  enddo
 
@@ -267,12 +262,10 @@
 !	  call filtering(n,numsub,ns,nsg,w,F)
 !	  call interavg2d(t,u)
 !	  call interavg2d(t,w)
-
-!     Printing differences between vectors
-	  
+!     Printing differences between vectors	  
 	  deallocate(BGx,BGz)
 
-!         Verificando continuidad 
+!     Verificando continuidad 
 !	  cont = 0.
 !	  call CFL(u,w,coux,couz)
 !	  allocate(dudx(nsg),dwdz(nsg))
@@ -286,9 +279,7 @@
 	  
 !	Comento lo que tenga que ver con los calculos de error porque no tienen 
 !	nada que hacer en este caso (APR - 170228)
-
-!	  call error(t,u,w,ue,ve,Linfu,Linfw,erru,errw)
-	  
+!	  call error(t,u,w,ue,ve,Linfu,Linfw,erru,errw)	  
 !	  eu = abs(Linfu - Lu)/Linfu ! Stopping Criteria
 !	  ew = abs(Linfw - Lw)/Linfu
 	  

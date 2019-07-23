@@ -124,9 +124,9 @@
          gamma(k+1) = -s(k)*gamma(k)
          gamma(k  ) =  c(k)*gamma(k)
          if (ifdone .or. abs(gamma(k+1)) < etol) then
-	  niter = k
-	  exit
-	 end if
+	      niter = k
+	      exit
+	   end if
       end do !k
 	
 	deallocate(adiag,w,s)
