@@ -54,7 +54,7 @@
 	allocate(d(n,n),d2(n,n),d3(n,n))
 	call derv(pd,points,d,d2,d3,pd)
 
-	filtro1 = 100.
+	filtro1 = 25.
 	
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
