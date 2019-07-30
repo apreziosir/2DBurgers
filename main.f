@@ -171,6 +171,8 @@
 ! 	  Advancing in time
 	  call BDAB(t,u,stx,um1,um2,stxm1,stxm2)
 	  call BDAB(t,w,stz,wm1,wm2,stzm1,stzm2)
+
+!	  call output3(t,velocidades,bu,bw)
 	
 	  deallocate(stx,stz)
 
@@ -199,6 +201,8 @@
 
 	  un2 = norm2(velocidades(:,1) - bu)
 	  wn2 = norm2(velocidades(:,2) - bw)
+
+!	  call output3(t,velocidades,bu,bw)
 
 !     Estimating norms of different vectors to check wether the BC are well or 
 !	  ill imposed (190702 - APR)

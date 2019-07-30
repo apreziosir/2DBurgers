@@ -23,7 +23,7 @@
 	real,dimension(nsg),intent(in) :: bv
 	
 ! 	Local Variables
-	integer :: k, i, temp, temp1, nr
+	integer :: k, i, temp, temp1, nr, SS
 	real :: lz,lx
 	real :: tau, omega, alpha, beta, temp2, temp3
 
@@ -68,21 +68,22 @@
 ! 	Conditions for the top
 	if (cond(3) == 1) then ! Dirichlet
 
-	   temp1 = size(velocidades(:,1))
+		SS = size(velocidades(:,1))
 
-	   do k = 0, nsubx-1
+	    do k = 0, nsubx-1
 	     lz = abs(cgp(scp(numsub-k,2),2) - cgp(scp(numsub-k,3),2))
 	     alpha = 1.
 	     omega = 2. / (pd*(pd+1.))
 	     tau = (delta*(2./lz)**2.) / (alpha*omega**2.)
 	     do i=1,n
-	       temp = nsg - (ns * k) + 1 - i
-	       temp1 = 100 - (k + 1) * n + i
+		   temp = nsg - (ns * k) + 1 - i
+		   temp1 = SS
+!	       temp1 = SS - (k + 1) * n + i
 ! 	       BG(temp) = BG(temp) - (tau * val(3))
-	       BG(temp) = BG(temp) - (tau * bv(temp))
+!	       BG(temp) = BG(temp) - (tau * velocidades(temp1,idc))
 	       temp2 = tau * velocidades(temp1, idc)
 		   BG(temp) = BG(temp) - temp2
-		   temp1 = temp1 - 1
+		   SS = SS - 1
 	     enddo
 	   enddo
 	elseif (cond(3) == 3) then ! Neumann with respect to z (PUEDE MEJORARSE)

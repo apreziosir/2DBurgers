@@ -73,46 +73,51 @@
 
 !	Conditions for the top strongly imposed. (APR 190725)
 !	This is for testing the boundary conditions with no penalization
-	   do k = 0, nsubx - 1
-		do i = 1, n
-		  temp = nsg - (ns * k) + 1 - i
-		  st(temp) = velocidades(SS, idc)
-		  SS = SS - 1
-		enddo
-	   enddo
+	!    do k = 0, nsubx - 1
+	! 	do i = 1, n
+	! 	  temp = nsg - (ns * k) + 1 - i
+	! 	  st(temp) = velocidades(SS, idc)
+	! 	  SS = SS - 1
+	! 	enddo
+	!    enddo
 
 ! 	Conditions for the top
-!	   do k = 0, nsubx - 1
-!	     lz = abs(cgp(scp(numsub-k,2),2)-cgp(scp(numsub-k,3),2))
-!	     mft = 2.0 / lz
-!		 do i = 1, n
+	   do k = 0, nsubx - 1
+	     lz = abs(cgp(scp(numsub-k,2),2)-cgp(scp(numsub-k,3),2))
+	     mft = 2.0 / lz
+		 do i = 1, n
 			
-!	       temp = nsg - (ns * k) + 1 - i
-!		   temp1 = SS
+	       temp = nsg - (ns * k) + 1 - i
+		   temp1 = SS
 !		   temp1 = SS - (k + 1) * n + i
 
 !	Testing the order of the imposed BC (190722 - APR)
 !		   write(*,*) 'Esto es!!!'
 !		   write(*,*) temp, temp1 
 
-!	       if (w(temp) < 0.0) then
-!			  alpha = abs(w(temp))
-!			  tau = (fac * mft) / (2.0 * omega)
+	       if (w(temp) < 0.0) then
+			  alpha = abs(w(temp))
+			  tau = (fac * mft) / (2.0 * omega)
 
 !       La condicion de contorno es un solo valor si esta activa la 
 !       primera linea
 !!!		st(temp) = st(temp) + (tau*(alpha*rho(temp) - alpha*val(3)))
 
-!!!		st(temp) = st(temp) + (tau*(alpha*rho(temp) - alpha*bv(temp)))
-!		      temp2 = tau*(alpha*rho(temp)-alpha*velocidades(temp1,idc))
-!			  st(temp)=st(temp) + temp2
+!  VERIFICAR SI ESTA LÍNEA QUE SIGUE DEBE SER INCLUIDA
+!  AHORA SON DOS LÍNEAS (LAS QUE EMPIEZAN CON st(temp)... )
+!  ACTIVAR Y DESACTIVAR.
+!			  st(temp) = st(temp) + tau*alpha*rho(temp)  
+!			  st(temp) = st(temp) - alpha*velocidades(temp1,idc)
+		      temp2 = tau*alpha*(rho(temp)-velocidades(temp1,idc))
+			  st(temp)=st(temp) + temp2
 			
-!		   endif
+		   endif
 		   
-!           SS = SS - 1
+!		    temp1 = temp1 - 1
+            SS = SS - 1
 
-!	     enddo
-!	   enddo
+	     enddo
+	   enddo
 
 ! 	Conditions for the right
 	   do k = 1,nsubz
