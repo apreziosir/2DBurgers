@@ -54,7 +54,7 @@
 !			c6 = errw(jol)
 
 !               Se dejan de escribir los errores proque aca no se necesitan (APR)
-		write(fn,*) c1, c2, c3, c4 
+		write(fn,'(*(F14.8))') c1, c2, c3, c4 
 
 !               write(*,*) jol
 	      enddo

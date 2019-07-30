@@ -43,7 +43,7 @@
             c3 = bu(k + 1)
             c4 = bw(k + 1)
 
-        write(fn,*) c1, c2, c3, c4 
+        write(fn,'(*(F14.8))') c1, c2, c3, c4 
 
         enddo
         close(fn)
