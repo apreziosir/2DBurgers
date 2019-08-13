@@ -57,7 +57,7 @@
 	 write(10,*)(C(i,j),j=1,4)
 	enddo
 ! 	Type of boundary condition
-	write(10,*) 3, 3, 1, 3
+	write(10,*) 1, 3, 1, 3
         write(10,*) 0.00001, 0, 0, 0
         close(10)
 	end program geometry

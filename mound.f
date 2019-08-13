@@ -11,7 +11,7 @@
 	save
 	
 ! 	1. Viscosity (unidades cgs)
-	real, parameter :: nu = 0.0114 !8.8936 (original)
+	real, parameter :: nu = 0.0114 * 1000 !8.8936 (original)
 
 ! 	2. Gravity (unidades cgs)
 	real, parameter :: g = 981
@@ -20,7 +20,7 @@
 	real, parameter :: H = 20
 	
 !   4. Initial velocity in x
-	real, parameter :: vi_x = 0 	!6.44 !0.
+	real, parameter :: vi_x = 0. 	!6.44 !0.
 
 !   5. Initial velocity in z
 	real, parameter :: vi_z = 0.0
