@@ -23,13 +23,13 @@
 	implicit none
 
 ! 	Dummy arguments
-	real, dimension(nsg), intent(in) :: u,w
+	real, dimension(nsg), intent(in) :: u, w
 
 ! 	Local variables
-	real :: DeltaX, Ucn,Wcn, L
-	real :: mindis,vel
-	integer :: i,p
-	real,dimension(n*nsubx) :: vel1, vel2
+	real :: DeltaX, Ucn, Wcn, L
+	real :: mindis, vel
+	integer :: i, p
+	real,dimension(n * nsubx) :: vel1, vel2
 	
 ! 	L = 1.0 * 2.0 * acos(-1.0) ! For the circular bump
 ! 	L = 10.0 ! For the horizontal one
@@ -80,11 +80,14 @@
 	
 !	dT = CN * mindis / vel
 	
-	dT = 1e-2
+!	dT = 1e-2
+
+!       Timestep from Northwestern results
+        dT = 3e-2
 
 	CN = dT * vel / mindis
 
-	
+!       Esto ya no funciona (marzo/2020) deprecated
 !	tmax = L / dT
 	
 	write(*,*) 'Delta t: ', dT

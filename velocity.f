@@ -27,7 +27,7 @@
 ! 	 w(i) = (-cx(i)+0.0) ! ojo mas la mitad del dominio 
 ! 	enddo
 ! 	Just advection in one direction
-	do i = 1,nsg
+	do i = 1, nsg
 	 u(i) = -0.5
 	 w(i) = 0.0
 	enddo

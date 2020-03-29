@@ -14,7 +14,7 @@
 ! 	Local variables
 	integer :: i,j
 
-	open(55,file = 'PruebaGeom.dat',status='old')
+	open(55, file = 'PruebaGeom.dat', status='old')
 
 ! 	Reading coordinates of grid points
 	do i = 1,ngp
@@ -32,5 +32,5 @@
 
 ! 	Reading the magnitude of the imposed BC
 	read(55,*)(val(j), j = 1, 4)
-	
+
 	end subroutine readdata

@@ -14,7 +14,8 @@
 	real :: dT 
 	
 ! 	2. Maximum number of time steps (segundos, tiempo REAL)
-	integer :: tmax = 119
+!	Modificado para que corra con los datos de NU (marzo 2020)
+	integer :: tmax = 105
 	
 ! 	3. Courant Number
 !	real, parameter :: CN
