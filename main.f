@@ -136,7 +136,9 @@
 
 	do t = 1,pp
 
-!	  Llamando rutina para leer arreglo con top BC (170228)
+!         Llamando rutina para leer arreglo con top BC (170228)
+!         Se arregla la rutina para que quede leyendo carpeta LES nu
+!         (marzo 2020 - APR)
 	  call readBvel(t)
 
 ! 	  write(*,*) t, pp
