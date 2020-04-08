@@ -54,7 +54,7 @@
 	allocate(d(n,n),d2(n,n),d3(n,n))
 	call derv(pd,points,d,d2,d3,pd)
 
-	filtro1 = 50.
+	filtro1 = 12.
 
 ! 	Generate Weights for Legendre polynomials and filter matrix
 !	The value in line 60 (last of localfil arguments) is the filter value
@@ -66,13 +66,13 @@
 	call mapping
 
 !	Esta parte imprime coordenadas y ya (APR) (190715)
-	open(38, file = "Coordinates.dat")
-	do i = 1,nsg
-            write(38,*) cx(i), cz(i)
-	enddo
-	close(38)
+!	open(38, file = "Coordinates.dat")
+!	do i = 1,nsg
+!            write(38,*) cx(i), cz(i)
+!	enddo
+!	close(38)
 
-	stop
+!	stop
 !	pause
 
 ! 	Setting exact solution
@@ -311,7 +311,7 @@
 	    ff = ff + 1.0
 	    fn = fn + 1
 		call output2(fn,u,w,erru,errw)
-		call output3(fn,velocidades,bu,bw)
+!		call output3(fn,velocidades,bu,bw)
 !		Escribir velocidad vertical!
 !		write(*,*) w
 ! 	    call error(t,u,w,ue,ve,Linfu,Linfw)

@@ -19,9 +19,9 @@
 ! 	Local Variables
 	integer :: i,j,k,l,jol
 	real :: c1,c2,c3,c4,c5,c6,c7
-	character (LEN=80) :: fout
+	character (LEN=32) :: fout
 	character (LEN=9 ) :: fmt2
-	character (LEN=30) :: fspec
+	character (LEN=9 ) :: fspec
 	
 	fmt2='(i4.4,a4)'
 	fspec = 'ZBurgers_'
