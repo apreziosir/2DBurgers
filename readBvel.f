@@ -1,5 +1,6 @@
 	subroutine readBvel(t)
     
+	USE scrotum
 	USE aetas
 	USE geom
 
@@ -34,7 +35,7 @@
 	open(23, file=ftot, status='old')
 
 !	Iteracion en arreglo bidimensional leyendo velocidades
-	do i = 1, 100 
+	do i = 1, n * nsubx 
 
 		read(23,*)(velocidades(i,j), j = 1, 2)		
 
