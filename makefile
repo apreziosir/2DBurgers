@@ -15,7 +15,7 @@ USE_INCL= scrotum.o mound.o geom.o legendre.o map.o aetas.o\
 	  main.o readdata.o gll.o derv.o mapping.o\
 	  ex2dbur.o output2.o velocity.o timestep.o readBvel.o\
 	  diffx.o diffz.o spamer.o BCPen.o patchpen.o BDAB.o\
-	  setdelta.o initburgers.o CFL.o\
+	  setdelta.o initburgers.o CFL.o \
 	  BCrhs.o solve_gmres.o lhs_gmres.o allmixed.o\
 	  BC.o patching.o interavg2d.o quad.o localFil.o filtering.o\
 	  output3.o
@@ -28,12 +28,12 @@ USE_ROUT= scrotum.f mound.f geom.f legendre.f map.f aetas.f\
 	  filtering.f output3.f
 
 
-FC = /opt/intel/bin/ifort
+# FC = /opt/intel/bin/ifort
 # FC = f95
-# FC = gfortran
+FC = gfortran
 
-FFLAGS = -r8 -align none
-# FFLAGS = -O3 -fdefault-real-8
+# FFLAGS = -r8 -align none
+FFLAGS = -O3 -fdefault-real-8
 
 #  Compile
 
