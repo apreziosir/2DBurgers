@@ -34,6 +34,6 @@ plt.ylim(-28, 0)
 plt.xlabel(r'Streamwise direction $(cm)$')
 plt.ylabel(r'Vertical direction $(cm)$')
 plt.show()
-f.savefig("grid2D.eps")
+f.savefig("grid2D_reg.eps")
 
 print(sys.maxsize)

@@ -1,4 +1,5 @@
 	program geometry
+
 ! 	This program creates the input file for the solution of
 ! 	Helmholtz or Advection equation via Spectral Multidomain methods
 ! 	2D Equidistant Structured mesh
@@ -30,8 +31,12 @@
 !	pz = (/ -20.,-18.75,-17.5,-15.,-10.,-5.,-2.5,-1.25,-0.625,-0.3125,0. /)
 
 !	This is a new inserition for the current domain size of 60 cm x 28 cm
-	pz = (/-28., -26.75, -25.5, -23., -18., -15., -10., -7.5, -5., &
-			-2.5, -2., -1.25, -1., -0.525, -0.3125, 0./)
+!	pz = (/-28., -26.75, -25.5, -23., -18., -15., -10., -7.5, -5., &
+!			-2.5, -2., -1.25, -1., -0.525, -0.3125, 0./)
+
+!	This is a new inserition for the current domain size of 60 cm x 28 cm
+	pz = (/-28., -27., -26., -24., -22., -20., -18., -16., -14., -12., &
+      		-10., -8., -6., -4., -2., 0./) 
 
 	dx=(x - x0) / nx ! Cambiado por diferencia entre xmax y xmin
 !	Este pedazo de dz se quita porque es el que voy a volver variable, el 
